@@ -20,9 +20,11 @@ JS_XAXIS=0
 JS_YAXIS=1
 JS_STARTBUTTON=0
 
-
 pygame.mixer.pre_init(22050,16,2,512)
 JS_STARTBUTTON=0
+
+
+
 pygame.mixer.init()
 
 clock = pygame.time.Clock()
@@ -34,6 +36,13 @@ pygame.display.set_caption("Pacman")
 screen = pygame.display.get_surface()
 
 img_Background = pygame.image.load(os.path.join(SCRIPT_PATH,"res","backgrounds","1.gif")).convert()
+
+
+
+
+
+
+
 
 snd_pellet = {}
 snd_pellet[0] = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"res","sounds","pellet1.wav"))
