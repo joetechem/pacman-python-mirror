@@ -1,5 +1,7 @@
 #! /usr/bin/python
 
+# BOUSHALL NEXTUP RVA
+
 # pacman.pyw
 # By David Reilly
 
@@ -24,7 +26,7 @@ pygame.mixer.pre_init(22050,16,2,512)
 JS_STARTBUTTON=0
 
 ### PART ONE ###
-#### SETTING THE GMAE'S SURFACE
+#### SETTING THE GAME'S SURFACE
 
 
 
