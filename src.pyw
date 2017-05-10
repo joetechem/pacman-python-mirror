@@ -37,7 +37,7 @@ pygame.display.set_caption("Pacman")
 
 screen = pygame.display.get_surface()
 
-img_Background = pygame.image.load(os.path.join(SCRIPT_PATH,"res","backgrounds","1.gif")).convert()
+img_Background = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","backgrounds","1.gif")).convert()
 
 
 
@@ -47,13 +47,13 @@ img_Background = pygame.image.load(os.path.join(SCRIPT_PATH,"res","backgrounds",
 
 
 snd_pellet = {}
-snd_pellet[0] = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"res","sounds","pellet1.wav"))
-snd_pellet[1] = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"res","sounds","pellet2.wav"))
-snd_powerpellet = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"res","sounds","powerpellet.wav"))
-snd_eatgh = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"res","sounds","eatgh2.wav"))
-snd_fruitbounce = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"res","sounds","fruitbounce.wav"))
-snd_eatfruit = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"res","sounds","eatfruit.wav"))
-snd_extralife = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"res","sounds","extralife.wav"))
+snd_pellet[0] = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"modules","sounds","pellet1.wav"))
+snd_pellet[1] = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"modules","sounds","pellet2.wav"))
+snd_powerpellet = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"modules","sounds","powerpellet.wav"))
+snd_eatgh = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"modules","sounds","eatgh2.wav"))
+snd_fruitbounce = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"modules","sounds","fruitbounce.wav"))
+snd_eatfruit = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"modules","sounds","eatfruit.wav"))
+snd_extralife = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"modules","sounds","extralife.wav"))
 
 ghostcolor = {}
 ghostcolor[0] = (255, 0, 0, 255)
@@ -75,7 +75,7 @@ class game ():
             """If res/hiscore.txt exists, read it. If not, return the default high scores.
                Output is [ (score,name) , (score,name) , .. ]. Always 6 entries."""
             try:
-              f=open(os.path.join(SCRIPT_PATH,"res","hiscore.txt"))
+              f=open(os.path.join(SCRIPT_PATH,"modules","hiscore.txt"))
               hs=[]
               for line in f:
                 while len(line)>0 and (line[0]=="\n" or line[0]=="\r"): line=line[1:]
@@ -94,7 +94,7 @@ class game ():
               
     def writehiscores(self,hs):
             """Given a new list, write it to the default file."""
-            fname=os.path.join(SCRIPT_PATH,"res","hiscore.txt")
+            fname=os.path.join(SCRIPT_PATH,"modules","hiscore.txt")
             f=open(fname,"w")
             for line in hs:
               f.write(str(line[0])+" "+line[1]+"\n")
@@ -130,7 +130,7 @@ class game ():
 
     def makehiscorelist(self):
             """Read the High-Score file and convert it to a useable Surface."""
-            f=pygame.font.Font(os.path.join(SCRIPT_PATH,"res","VeraMoBd.ttf"),10)
+            f=pygame.font.Font(os.path.join(SCRIPT_PATH,"modules","VeraMoBd.ttf"),10)
             scoresurf=pygame.Surface((276,86),pygame.SRCALPHA)
             scoresurf.set_alpha(200)
             linesurf=f.render(" "*18+"HIGH SCORES",1,(255,255,0))
@@ -180,11 +180,11 @@ class game ():
         # numerical display digits
         self.digit = {}
         for i in range(0, 10, 1):
-            self.digit[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","text",str(i) + ".gif")).convert()
-        self.imLife = pygame.image.load(os.path.join(SCRIPT_PATH,"res","text","life.gif")).convert()
-        self.imGameOver = pygame.image.load(os.path.join(SCRIPT_PATH,"res","text","gameover.gif")).convert()
-        self.imReady = pygame.image.load(os.path.join(SCRIPT_PATH,"res","text","ready.gif")).convert()
-        self.imLogo = pygame.image.load(os.path.join(SCRIPT_PATH,"res","text","logo.gif")).convert()
+            self.digit[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","text",str(i) + ".gif")).convert()
+        self.imLife = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","text","life.gif")).convert()
+        self.imGameOver = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","text","gameover.gif")).convert()
+        self.imReady = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","text","ready.gif")).convert()
+        self.imLogo = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","text","logo.gif")).convert()
         self.imHiscores = self.makehiscorelist()
         
     def StartNewGame (self):
@@ -518,7 +518,7 @@ class ghost ():
         
         self.anim = {}
         for i in range(1, 7, 1):
-            self.anim[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","ghost " + str(i) + ".gif")).convert()
+            self.anim[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","sprite","ghost " + str(i) + ".gif")).convert()
             
             # change the ghost color in this frame
             for y in range(0, 16, 1):
@@ -684,7 +684,7 @@ class fruit ():
         
         self.imFruit = {}
         for i in range(0, 5, 1):
-            self.imFruit[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","fruit " + str(i) + ".gif")).convert()
+            self.imFruit[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","sprite","fruit " + str(i) + ".gif")).convert()
         
         self.currentPath = ""
         self.fruitType = 1
@@ -798,11 +798,11 @@ class pacman ():
         self.anim_pacmanCurrent = {}
         
         for i in range(1, 9, 1):
-            self.anim_pacmanL[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacman-l " + str(i) + ".gif")).convert()
-            self.anim_pacmanR[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacman-r " + str(i) + ".gif")).convert()
-            self.anim_pacmanU[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacman-u " + str(i) + ".gif")).convert()
-            self.anim_pacmanD[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacman-d " + str(i) + ".gif")).convert()
-            self.anim_pacmanS[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","sprite","pacman.gif")).convert()
+            self.anim_pacmanL[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","sprite","pacman-l " + str(i) + ".gif")).convert()
+            self.anim_pacmanR[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","sprite","pacman-r " + str(i) + ".gif")).convert()
+            self.anim_pacmanU[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","sprite","pacman-u " + str(i) + ".gif")).convert()
+            self.anim_pacmanD[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","sprite","pacman-d " + str(i) + ".gif")).convert()
+            self.anim_pacmanS[i] = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","sprite","pacman.gif")).convert()
 
         self.pelletSndNum = 0
         
@@ -1145,7 +1145,7 @@ class level ():
         
         self.pellets = 0
         
-        f = open(os.path.join(SCRIPT_PATH,"res","levels",str(levelNum) + ".txt"), 'r')
+        f = open(os.path.join(SCRIPT_PATH,"modules","levels",str(levelNum) + ".txt"), 'r')
         lineNum=-1
         rowNum = 0
         useLine = False
@@ -1358,7 +1358,7 @@ def CheckInputs():
     
 def GetCrossRef ():
 
-    f = open(os.path.join(SCRIPT_PATH,"res","crossref.txt"), 'r')
+    f = open(os.path.join(SCRIPT_PATH,"modules","crossref.txt"), 'r')
     # ANDY -- edit
     #fileOutput = f.read()
     #str_splitByLine = fileOutput.split('\n')
@@ -1388,7 +1388,7 @@ def GetCrossRef ():
             
             thisID = int(str_splitBySpace[0])
             if not thisID in NO_GIF_TILES:
-                tileIDImage[ thisID ] = pygame.image.load(os.path.join(SCRIPT_PATH,"res","tiles",str_splitBySpace[1] + ".gif")).convert()
+                tileIDImage[ thisID ] = pygame.image.load(os.path.join(SCRIPT_PATH,"modules","tiles",str_splitBySpace[1] + ".gif")).convert()
             else:
                     tileIDImage[ thisID ] = pygame.Surface((16,16))
             
