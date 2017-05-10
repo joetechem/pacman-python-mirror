@@ -22,17 +22,27 @@ JS_STARTBUTTON=0
 
 pygame.mixer.pre_init(22050,16,2,512)
 JS_STARTBUTTON=0
-pygame.mixer.init()
 
-clock = pygame.time.Clock()
-pygame.init()
+### PART ONE ###
+#### SETTING THE GMAE'S SURFACE
 
-window = pygame.display.set_mode((1, 1))
-pygame.display.set_caption("Pacman")
 
-screen = pygame.display.get_surface()
 
-img_Background = pygame.image.load(os.path.join(SCRIPT_PATH,"res","backgrounds","1.gif")).convert()
+
+
+
+
+
+
+
+
+
+
+
+### END PART ONE ###
+
+
+
 
 snd_pellet = {}
 snd_pellet[0] = pygame.mixer.Sound(os.path.join(SCRIPT_PATH,"res","sounds","pellet1.wav"))
